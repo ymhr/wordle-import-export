@@ -61,6 +61,12 @@ function replaceStatsInLocalStorage() {
 	if (localStorage.getItem(statsKey)) {
 		message = "There are already stats on this device. Are you sure you wish to replace them? This cannot be undone.";
 	}
+
+	/*
+	I'd rather use `execCommand('paste')` but it's disabled on most devices.
+	There's an alternative modern version but it requires granting permissions and I did not want to do that on someone elses website,
+	so I made it manual instead.
+	*/
 	const stats = prompt(message);
 	if (stats) {
 		try {
