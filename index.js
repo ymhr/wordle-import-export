@@ -11,18 +11,19 @@ const statsKey = 'nyt-wordle-statistics';
 function createModal() {
 	const modal = document.createElement('div');
 	modal.style.background = '#fff';
-	modal.style.padding = "10px";
+	modal.style.padding = '10px';
 	modal.style.position = 'relative';
 
 	const copyButton = document.createElement('button');
-	copyButton.innerText = "Copy stats to clipboard";
+	copyButton.innerText = 'Copy stats to clipboard';
 	copyButton.onclick = copyStatsToClipboard.bind(null, modal);
 
 	const importButton = document.createElement('button');
-	importButton.innerText = "Import";
+	importButton.innerText = 'Import';
 	importButton.onclick = replaceStatsInLocalStorage;
 
-	modal.innerHTML = "<h1>Import/export stats</h1><div>Click the 'copy to clipboard' button below to copy your stats. Paste them somewhere safe. Then, on your new device, copy that text to your clipboard and click 'import from clipboard'.<br><br>This will OVERWRITE the stats currently on the device and replace it with the ones you previously exported, so please <strong> USE WITH CAUTION</strong>.</div>";
+	modal.innerHTML =
+		"<h1>Import/export stats</h1><div>Click the 'copy to clipboard' button below to copy your stats. Paste them somewhere safe. Then, on your new device, copy that text to your clipboard and click 'import from clipboard'.<br><br>This will OVERWRITE the stats currently on the device and replace it with the ones you previously exported, so please <strong> USE WITH CAUTION</strong>.</div>";
 
 	modal.append(copyButton, importButton);
 
@@ -30,13 +31,14 @@ function createModal() {
 	closeButton.onclick = () => window.location.reload();
 	modal.prepend(closeButton);
 	closeButton.innerHTML = '<strong>X</strong>';
-	closeButton.style.cssText = 'position:absolute;top:0;right:0;cursor:pointer;padding:5px';
+	closeButton.style.cssText =
+		'position:absolute;top:0;right:0;cursor:pointer;padding:5px';
 	return modal;
 }
 
 /**
- * 
- * @param {HTMLDivElement} modal 
+ *
+ * @param {HTMLDivElement} modal
  */
 function copyStatsToClipboard(modal) {
 	const statsData = localStorage.getItem(statsKey);
@@ -57,9 +59,10 @@ function copyStatsToClipboard(modal) {
 }
 
 function replaceStatsInLocalStorage() {
-	let message = "Paste your stats here to replace them on this device.";
+	let message = 'Paste your stats here to replace them on this device.';
 	if (localStorage.getItem(statsKey)) {
-		message = "There are already stats on this device. Are you sure you wish to replace them? This cannot be undone.";
+		message =
+			'There are already stats on this device. Are you sure you wish to replace them? This cannot be undone.';
 	}
 
 	/*
@@ -73,23 +76,24 @@ function replaceStatsInLocalStorage() {
 			//Parsing here to make sure these stats are valid JSON
 			JSON.parse(stats);
 			localStorage.setItem(statsKey, stats);
-			alert('Stats successfully imported. Have fun!')
+			alert('Stats successfully imported. Have fun!');
 			window.location.reload();
 		} catch (e) {
-			alert("These stats are invalid!");
+			alert('These stats are invalid!');
 		}
 	} else {
-		alert("Aborted. Nothing has been changed.");
+		alert('Aborted. Nothing has been changed.');
 	}
 }
 
 (() => {
 	const container = document.createElement('div');
-	container.style.cssText = 'display:flex;position:absolute;top:0;right:0;left:0;bottom:0;justify-content:center;align-items:center;background:rgba(0,0,0,0.7)';
+	container.style.cssText =
+		'display:flex;position:absolute;top:0;right:0;left:0;bottom:0;justify-content:center;align-items:center;background:rgba(0,0,0,0.7)';
 
 	const modal = createModal();
 
 	container.append(modal);
 
 	document.body.after(container);
-})()
+})();
