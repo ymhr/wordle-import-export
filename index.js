@@ -1,6 +1,9 @@
 /*
 Wordle import/export
 By James Martin (@ymhr)
+
+Pretty simple - it copies the stats out of local storage, then the user is responsible to getting it
+from one device to the other, then it provides a method to paste and import it.
 */
 
 const statsKey = 'nyt-wordle-statistics';
@@ -14,7 +17,6 @@ function createModal() {
 	const copyButton = document.createElement('button');
 	copyButton.innerText = "Copy stats to clipboard";
 	copyButton.onclick = copyStatsToClipboard.bind(null, modal);
-
 
 	const importButton = document.createElement('button');
 	importButton.innerText = "Import from clipboard";
