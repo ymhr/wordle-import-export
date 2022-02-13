@@ -19,7 +19,7 @@ function createModal() {
 	copyButton.onclick = copyStatsToClipboard.bind(null, modal);
 
 	const importButton = document.createElement('button');
-	importButton.innerText = "Import from clipboard";
+	importButton.innerText = "Import";
 	importButton.onclick = replaceStatsInLocalStorage;
 
 	modal.innerHTML = "<h1>Import/export stats</h1><div>Click the 'copy to clipboard' button below to copy your stats. Paste them somewhere safe. Then, on your new device, copy that text to your clipboard and click 'import from clipboard'.<br><br>This will OVERWRITE the stats currently on the device and replace it with the ones you previously exported, so please <strong> USE WITH CAUTION</strong>.</div>";
