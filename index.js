@@ -68,6 +68,7 @@ function replaceStatsInLocalStorage() {
 			JSON.parse(stats);
 			localStorage.setItem(statsKey, stats);
 			alert('Stats successfully imported. Have fun!')
+			window.location.reload();
 		} catch (e) {
 			alert("These stats are invalid!");
 		}
