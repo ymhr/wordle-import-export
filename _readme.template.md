@@ -6,5 +6,5 @@ Worry no more!
 Simply copy and paste this code into your URL bar while looking at Wordle, follow the instructions, and enjoy the game on a new device with your entire history!
 
 ```javacsript
-!!BOOKMARKLET!!
+javascript:!!BOOKMARKLET!!
 ```
